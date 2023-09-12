@@ -10,6 +10,7 @@ class Driver(models.Model):
     date_hired = models.DateField()
     date_fired = models.DateField(null=True)
     active = models.BooleanField(default=True)
+    profile = models.ImageField(upload_to='profiles_driver/')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
