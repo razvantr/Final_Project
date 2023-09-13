@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}List of Drivers{% endblock %}
+
+{% block content %}
+    <div class="contaier-fluid">
+        {% if all_drivers %}
+            <div class="row">
+                {% for driver in all_drivers %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            {% if driver.profile %}
+                                <img src="{{ driver.profile }}" class="card-img-top" alt="No image">
+                            {% else %}
+                                <img src="{% static 'images/image.png' %}" class="card-img-top" alt="No image">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ driver }}</h5>
+                                <p class="card-text">{{ driver.email }}</p>
+                                <p class="card-text">{{ driver.date_hired }}</p>
+                                {% if driver.date_fired %}
+                                    <p class="card-text">{{ driver.date_fired }}</p>
+                                {% endif %}
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <li><a class="dropdown-item" href="{% url 'update-driver' driver.id %}">Update</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'details-driver' driver.id %}">Details</a></li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <b>NO DRIVERS WERE FOUND</b>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

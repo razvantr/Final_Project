@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %}Create a new Car{% endblock %}
+{% block title %}Update - {{ car }}{% endblock %}
 
 {% block content %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card">
-                    <div class="card-header">Create new car</div>
+                    <div class="card-header">Update - {{ car }}</div>
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="card-body">
-                            {{ form.as_p }}
+                            {{ form }}
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-outline-success">Save</button>
-                            <a href="{% url 'home-page' %}" class="btn btn-outline-secondary">Cancel</a>
+                            <a href="{% url 'list-of-cars' %}" class="btn btn-outline-secondary">Cancel</a>
                         </div>
                     </form>
                 </div>

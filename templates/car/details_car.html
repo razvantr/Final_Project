@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}View details - {{ car }}{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br><br><br>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ car }}</h5>
+                        <p class="card-text"><strong>Driver:</strong> {{ car.driver }}</p>
+                        <a href="{% url 'list-of-cars' %}">Back</a>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        Created at: {{ car.created_at|date:"d-m-Y H:i:s" }} / Updated
+                        at: {{ car.updated_at|date:"d-m-Y H:i:s" }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

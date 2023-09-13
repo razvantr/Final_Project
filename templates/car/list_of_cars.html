@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}List of cars{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            {% if all_cars %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Licence Plate</th>
+                        <th>Driver</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for car in all_cars %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ car.plate }}</td>
+                            {% if car.driver %}
+                                <td>{{ car.driver }}</td>
+                            {% endif %}
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'update-car' car.id %}">
+                                            Update</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'delete-car' car.id %}">
+                                            Delete</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'details-car' car.id %}">
+                                            View details</a></li>
+                                    </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="col-md-4 offset-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>NO CARS WERE FOUND</b>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

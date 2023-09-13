@@ -6,7 +6,7 @@ from driver.models import Driver
 class Car(models.Model):
 
     plate = models.CharField(max_length=9)
-    driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
+    driver = models.ForeignKey(Driver, on_delete=models.CASCADE, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
