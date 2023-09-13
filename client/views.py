@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView
@@ -26,3 +27,13 @@ class ClientDeleteView(DeleteView):
     template_name = 'client/delete_client.html'
     model = Client
     success_url = 'list-of-clients'
+
+
+def search(request):
+    get_value = request.GET.get('filter')
+    if get_value:
+        clients = Client.objects.filter(Q(last_name__icontains=get_value) | Q(first_name__icontains=get_value))
+    else:
+        clients = Client.objects.all()
+
+    return render(request, 'client/list_of_clients.html', {'all_clients': clients})

@@ -1,5 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %}{% endblock %}
+{% block title %}List of clients{% endblock %}
 
-{% block content %}{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            {% if all_clients %}
+                <div class="col-md-12">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Ride</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for client in all_clients %}
+                            <tr>
+                                <td>{{ client.first_name }}</td>
+                                <td>{{ client.last_name }}</td>
+                                <td>{{ client.ride }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="col-md-4 offset-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>NO CLIENTS WERE FOUND</b>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
