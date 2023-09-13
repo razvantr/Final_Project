@@ -6,11 +6,12 @@ from client.models import Client
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
-        fields = ['name', 'ride']
+        fields = ['first_name', 'last_name', 'ride']
 
         widgets = {
-            'name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your name'}),
-            'ride': Select(attrs={'class': 'form-control'})
+            'first_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your first name'}),
+            'last_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your last name'}),
+            'ride': Select(attrs={'class': 'form-select'})
         }
 
     def clean(self):

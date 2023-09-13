@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}List of rides{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            {% if all_rides %}
+                <div class="col-md-6 offset-md-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Starting at</th>
+                            <th>Ending at</th>
+                            <th>Driver</th>
+                            <th>Car</th>
+                            <th>Time</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ride in all_rides %}
+                            <td>{{ ride.starting_at }}</td>
+                            <td>{{ ride.ending_at }}</td>
+                            <td>{{ ride.driver }}</td>
+                            <td>{{ ride.car }}</td>
+                            <td>{{ ride.time }}</td>
+                            <td>{{ ride.price }}</td>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="col-md-4 offset-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <b>NO RIDES WERE FOUND</b>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
