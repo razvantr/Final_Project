@@ -1,21 +1,23 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView
-
 from ride.forms import RideForm
 from ride.models import Ride
 
 
 # Create your views here.
-class RideCreateView(CreateView):
+class RideCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'ride/create_ride.html'
     model = Ride
     form_class = RideForm
     success_url = reverse_lazy('list-of-rides')
+    success_message = 'Ride was added successfully'
 
     def form_valid(self, form):
-        pass
+        return redirect('list-of-rides')
 
 
 class RideListView(ListView):
@@ -24,7 +26,7 @@ class RideListView(ListView):
     context_object_name = 'all_rides'
 
 
-class RideDeleteView(DeleteView):
+class RideDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'ride/delete_ride.html'
     model = Ride
     success_url = reverse_lazy('list-of-rides')

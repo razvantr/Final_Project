@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from ride.models import Ride
 
@@ -11,3 +12,12 @@ class Client(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+
+class HistoryClient(models.Model):
+    message = models.TextField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.message

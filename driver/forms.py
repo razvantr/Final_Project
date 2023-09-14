@@ -19,6 +19,13 @@ class DriverForm(forms.ModelForm):
         cleaned_data = self.cleaned_data
         print(cleaned_data)
 
+        get_email = cleaned_data.get('email')
+
+        check_email = Driver.objects.filter(email=get_email)
+        if check_email:
+            msg = 'Email already in use'
+            self._errors['email'] = self.error_class([msg])
+
         return cleaned_data
 
 

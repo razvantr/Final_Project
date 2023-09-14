@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from driver.models import Driver
 
@@ -13,3 +14,12 @@ class Car(models.Model):
 
     def __str__(self):
         return self.plate
+
+
+class HistoryCar(models.Model):
+    message = models.TextField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.message
