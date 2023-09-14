@@ -11,7 +11,10 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'home-page' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Rides</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'create-client' %}">Reserve a ride</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list-of-rides' %}">Rides</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -19,16 +22,17 @@
                         Cars and Drivers
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Add Driver</a></li>
-                        <li><a class="dropdown-item" href="#">List of Drivers</a></li>
-                        <li><a class="dropdown-item" href="#">Add a Car</a></li>
-                        <li><a class="dropdown-item" href="#">List of Cars</a></li>
+                        <li><a class="dropdown-item" href="{% url 'create-driver' %}">Add Driver</a></li>
+                        <li><a class="dropdown-item" href="{% url 'list-of-drivers' %}">List of Drivers</a></li>
+                        <li><a class="dropdown-item" href="{% url 'create-car' %}">Add a Car</a></li>
+                        <li><a class="dropdown-item" href="{% url 'list-of-cars' %}">List of Cars</a></li>
+                        <li><a class="dropdown-item" href="{% url 'create-ride' %}">Add a ride</a></li>
                     </ul>
                 </li>
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-outline-info" type="submit">Search</button>
             </form>
         </div>
     </div>
