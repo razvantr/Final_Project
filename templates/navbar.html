@@ -14,11 +14,14 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'create-client' %}">Reserve a ride</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'list-of-rides' %}">Rides</a>
+                    <a class="nav-link active" href="{% url 'list-of-rides' %}">Rides</a>
                 </li>
                 {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'list-of-clients' %}">Clients</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
                             Cars and Drivers
                         </a>

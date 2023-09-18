@@ -20,7 +20,7 @@ class UserForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'email']
 
     def __init__(self, *args, **kwargs):
-        super.__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.fields['first_name'].widget.attrs.update({'class': 'form-control',
                                                        'placeholder': 'Please enter your name'})

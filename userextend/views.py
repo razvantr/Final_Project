@@ -27,32 +27,26 @@ class UserCreationView(CreateView):
                                  f'_{random.randint(100000, 999999)}')
             new_user.save()
 
-            get_message = (f'Userul a fost adaugat cu success. Username: {new_user.username}, email:{new_user.email}, '
+            get_message = (f'User was added successfully. Username: {new_user.username}, email:{new_user.email}, '
                            f'first_name: {new_user.first_name}, last_name: {new_user.last_name}')
 
             History.objects.create(message=get_message, created_at=datetime.now(), active=True)
 
+            # details_user = {
+            #     'fullname': f'{new_user.first_name} {new_user.last_name}',
+            #     'username': new_user.username
+            # }
+
             # subject = 'Adding a new account'
-            # message = f'Congratulations! Your username is: {new_user.username}.'
+            # message = get_template('mail.html').render(details_user)
 
-            # send_mail(subject, message, 'george@popescu.ro', [new_user.email])
-            # send_mail(subject, message, EMAIL_HOST_USER, [new_user.email])
-
-            details_user = {
-                'fullname': f'{new_user.first_name} {new_user.last_name}',
-                'username': new_user.username
-            }
-
-            subject = 'Adding a new account'
-            message = get_template('mail.html').render(details_user)
-
-            mail = EmailMessage(
-                subject,
-                message,
-                EMAIL_HOST_USER,
-                [new_user.email]
-            )
-            mail.content_subtype = 'html'
-            mail.send()
+            # mail = EmailMessage(
+            #     subject,
+            #     message,
+            #     EMAIL_HOST_USER,
+            #     [new_user.email]
+            # )
+            # mail.content_subtype = 'html'
+            # mail.send()
 
         return redirect('login')

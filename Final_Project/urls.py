@@ -31,5 +31,6 @@ urlpatterns = [
     path('', include('ride.urls')),
     path('', include('client.urls')),
     path('', include('userextend.urls')),
+    path('', include('django.contrib.auth.urls')),
     path("login/", views.LoginView.as_view(form_class=AuthenticationNewForm), name="login")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

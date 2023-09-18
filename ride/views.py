@@ -16,9 +16,6 @@ class RideCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('list-of-rides')
     success_message = 'Ride was added successfully'
 
-    def form_valid(self, form):
-        return redirect('list-of-rides')
-
 
 class RideListView(ListView):
     template_name = 'ride/list_of_rides.html'

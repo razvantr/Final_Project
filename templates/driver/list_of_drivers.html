@@ -27,8 +27,12 @@
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                         Actions
                                     </button>
-                                    <li><a class="dropdown-item" href="{% url 'update-driver' driver.id %}">Update</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'details-driver' driver.id %}">Details</a></li>
+                                    <ul>
+                                        <li><a class="dropdown-item"
+                                               href="{% url 'update-driver' driver.id %}">Update</a></li>
+                                        <li><a class="dropdown-item"
+                                               href="{% url 'details-driver' driver.id %}">Details</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
