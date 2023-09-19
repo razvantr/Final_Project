@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
@@ -21,6 +23,10 @@ class RideListView(ListView):
     template_name = 'ride/list_of_rides.html'
     model = Ride
     context_object_name = 'all_rides'
+
+    def get_queryset(self):
+        all_rides = Ride.objects.exclude(ride_time__lt=datetime.datetime.now())
+        return all_rides
 
 
 class RideDeleteView(LoginRequiredMixin, DeleteView):

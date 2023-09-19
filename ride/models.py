@@ -13,12 +13,11 @@ class Ride(models.Model):
     ending_at = models.ForeignKey(EndLocation, on_delete=models.CASCADE)
     driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
-    date = models.DateField()
-    time = models.TimeField()
+    ride_time = models.DateTimeField()
     price = models.IntegerField()
 
     def __str__(self):
-        return f'From {self.starting_at} to {self.ending_at}, at {self.date}{self.time}'
+        return f'From {self.starting_at} to {self.ending_at}, at {self.ride_time}'
 
 
 class HistoryRide(models.Model):
