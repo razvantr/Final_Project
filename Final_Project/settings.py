@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ride',
     'client',
     'userextend',
+    'django_google_maps',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,5 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = ''
+
+GOOGLE_MAPS_API_KEY = ''
